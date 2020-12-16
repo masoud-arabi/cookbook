@@ -1,6 +1,8 @@
+require_relative 'view'
+require_relative 'recipe'
 
 class Controller
-def initializer(cookbook)
+def initialize(cookbook)
     @cookbook = cookbook
     @view = View.new
 end
@@ -12,11 +14,14 @@ end
 
 def create
     info = @view.fetch_info
-    recipe = Recipe.new(info[:name],info[:description])
+    recipe = Recipe.new(info[:name], info[:description])
     @cookbook.add_recipe(recipe)
 end
 
 def destroy
+    index = @view.index_for_destroy
+    @cookbook.remove_recipe(index)
+
 end
 
 end

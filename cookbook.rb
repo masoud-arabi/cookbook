@@ -1,5 +1,6 @@
 require_relative 'recipe'
 require 'csv'
+
 class Cookbook
     def initialize(csv_file_path)
         @csv_file_path = csv_file_path
@@ -21,7 +22,7 @@ class Cookbook
         store_csv
     end
     def load_csv
-        CSV.foreach do |row|
+        CSV.foreach(@csv_file_path) do |row|
             @recipes << Recipe.new(row[0], row[1])
         end
     end
