@@ -1,5 +1,5 @@
 class Recipe
-    attr_reader :name, :description, :rating, :prep_time
+    attr_reader :name, :description, :rating, :prep_time, :complete
     def initialize( name, description, rating, prep_time )
         @name = name
         @description = description
@@ -8,8 +8,12 @@ class Recipe
         @complete = false
     end
 
-    def complete?
+    def complete!
         @complete = true
+    end
+
+    def uncomplete!
+        @complete = false
     end
 end
 

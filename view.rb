@@ -1,7 +1,8 @@
 class View
     def display(recipes)
-        recipes.each_with_index do |recipe|
-            puts "#{recipe.name} #{recipe.description} #{recipe.rating} #{recipe.prep_time}"
+        recipes.each_with_index do |recipe, index|
+            result = recipe.complete ? '[X]' : '[ ]'
+            puts "#{index+1}#{result}#{recipe.name} #{recipe.description} #{recipe.rating} #{recipe.prep_time}"
         end 
     end
 
@@ -29,7 +30,13 @@ class View
     def index_for_destroy
         puts "what is the index?"
         puts "> "
-        index = gets.chomp.to_i
+        index = gets.chomp.to_i - 1
+    end
+
+    def word_for_recipe
+        puts "what is the name of recipe?"
+        puts "> "
+        name = gets.chomp
     end
 end
 

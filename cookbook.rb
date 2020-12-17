@@ -12,6 +12,10 @@ class Cookbook
         @recipes
     end
 
+    def find(recipe_index)
+        recipe = @recipes[recipe_index]
+    end
+
     def add_recipe(recipe)
         @recipes << recipe
         store_csv
